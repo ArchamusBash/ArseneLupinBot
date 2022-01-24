@@ -17,7 +17,7 @@ def updating():
     updt = Updater(boken = api)
 
 #tializing telebot lib
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(api)
 
 #starting greet
 @bot.message_handler(commands=["start"])
