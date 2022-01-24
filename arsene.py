@@ -8,6 +8,8 @@ import string
 #bot token
 token = "INSERT BOT TOKEN HERE"
 
+arr= [""]
+
 #initializing telebot lib
 bot = telebot.TeleBot(token)
 
@@ -26,9 +28,13 @@ def List(message):
 def Enc64(message):
     text = message.text.replace("/base64", "")
     text.strip()
-    text = os.linesep.join([s for s in text.splitlines() if s])
-    enc = base64.b64encode(text.encode('ascii'))
-    bot.reply_to(message, enc)
+    for item in arr:
+        if item == text:
+            bot.send_message(message.chat.id, "Please, send /base64 *your text*")
+        else:
+            text = os.linesep.join([s for s in text.splitlines() if s])
+            enc = base64.b64encode(text.encode('ascii'))
+            bot.reply_to(message, enc)
 
 #base64 decode
 @bot.message_handler(commands=["base64decode"])
