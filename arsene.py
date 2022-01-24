@@ -41,18 +41,27 @@ def Enc64(message):
 def Enc64dec(message):
     text = message.text.replace("/base64decode", "")
     text.strip()
-    text = os.linesep.join([s for s in text.splitlines() if s])
-    dec = base64.b64decode(text.encode('ascii'))
-    bot.reply_to(message, dec)
+    for item in arr:
+        if item == text:
+            bot.send_message(message.chat.id, "Please, send /base64decode *your text*")
+        else:
+            text = os.linesep.join([s for s in text.splitlines() if s])
+            
+            dec = base64.b64decode(text.encode('ascii'))
+            bot.reply_to(message, dec)
 
 #md5 hashing
 @bot.message_handler(commands=["md5"])
 def EncMd5(message):
     text = message.text.replace("/md5","")
     text.strip()
-    text = os.linesep.join([s for s in text.splitlines() if s])
-    text = hashlib.md5(text.encode()).hexdigest()
-    bot.reply_to(message, text)
+    for item in arr:
+        if item == text:
+            bot.send_message(message.chat.id, "Please, send /md5 *yout text*")
+        else:
+            text = os.linesep.join([s for s in text.splitlines() if s])
+            text = hashlib.md5(text.encode()).hexdigest()
+            bot.reply_to(message, text)
 
 
 
