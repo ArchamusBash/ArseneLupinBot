@@ -14,7 +14,7 @@ arr= [""]
 
 #updater
 def updating():
-    updt = Updater(boken = api)
+    updt = Updater(token = api)
 
 #tializing telebot lib
 bot = telebot.TeleBot(api)
