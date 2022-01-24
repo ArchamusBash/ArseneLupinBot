@@ -7,14 +7,14 @@ import string
 from telegram.ext import Updater
 
 #bot token
-btoken = os.getenv("API_KEY")
+token = os.getenv("API_KEY")
 
 #null array for comparisons
 arr= [""]
 
 #updater
 def updating():
-    updater = Updater(token=btoken)
+    updater = Updater(token=os.getenv("API_KEY"))
 
 #tializing telebot lib
 bot = telebot.TeleBot(token)
