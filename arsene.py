@@ -63,7 +63,7 @@ def EncMd5(message):
             bot.reply_to(message, text)
 
 
-
-bot.polling()
+while True:
+    bot.polling()
 
 
