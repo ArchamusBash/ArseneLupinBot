@@ -4,17 +4,12 @@ import os
 import hashlib
 import base64
 import string
-from telegram.ext import Updater
 
 #bot token
 api = os.getenv("API_KEY")
 
 #null array for comparisons
 arr= [""]
-
-#updater
-def updating():
-    updt = Updater(token = api)
 
 #tializing telebot lib
 bot = telebot.TeleBot(api)
@@ -69,7 +64,6 @@ def EncMd5(message):
             bot.reply_to(message, text)
 
 
-
-updt.start_polling()
-updt.idle()
+while True:
+    bot.polling()
 
