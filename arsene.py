@@ -7,14 +7,14 @@ import string
 from telegram.ext import Updater
 
 #bot token
-token = os.getenv("API_KEY")
+api = os.getenv("API_KEY")
 
 #null array for comparisons
 arr= [""]
 
 #updater
 def updating():
-    updater = Updater(token=os.getenv("API_KEY"))
+    updt = Updater(boken = api)
 
 #tializing telebot lib
 bot = telebot.TeleBot(token)
@@ -70,6 +70,6 @@ def EncMd5(message):
 
 
 
-updater.start_polling()
-updater.idle()
+updt.start_polling()
+    updt.idle()
 
