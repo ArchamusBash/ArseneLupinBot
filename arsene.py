@@ -43,10 +43,9 @@ def Enc64dec(message):
     text.strip()
     for item in arr:
         if item == text:
-            bot.send_message(message.chat.id, "Please, send /base64decode *your text*")
+            bot.send_messagemessage.chat.id, "Please, send /base64decode *your text*")
         else:
             text = os.linesep.join([s for s in text.splitlines() if s])
-            
             dec = base64.b64decode(text.encode('ascii'))
             bot.reply_to(message, dec)
 
