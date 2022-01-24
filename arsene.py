@@ -6,7 +6,7 @@ import base64
 import string
 
 #bot token
-token = os.environ["API_KEY"]
+token = os.getenv("API_KEY")
 
 arr= [""]
 
