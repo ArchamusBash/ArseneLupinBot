@@ -1,1 +1,1 @@
-python3 arsene.py
+web: python3 arsene.py
