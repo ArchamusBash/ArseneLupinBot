@@ -1,1 +1,1 @@
-web: python3 arsene.py
+bot: exec python3 arsene.py

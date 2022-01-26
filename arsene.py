@@ -24,7 +24,7 @@ def Greet(message):
 #list all commands
 @bot.message_handler(commands=["list"])
 def List(message):
-    bot.send_message(message.chat.id, "/base64 for base64 encoding\n /base64decode for base64 decoding\n /md5 for md5 hashing\n /feedback to send feedback to admin")
+    bot.send_message(message.chat.id, "/base64 for base64 encoding\n /base64decode for base64 decoding\n /md5 for md5 hashing\n /feedback to send feedback to admin\n /cancel cancel current action")
 
 #base64 encode
 @bot.message_handler(commands=["base64"])
@@ -64,6 +64,11 @@ def EncMd5(message):
             text = os.linesep.join([s for s in text.splitlines() if s])
             text = hashlib.md5(text.encode()).hexdigest()
             bot.reply_to(message, text)
+
+#cancel command
+@bot.message_handler(commands=["cancel"])
+def Cancel(message):
+    bot.send_message(message.chat.id, "I was not doing anything anyway...")
 
 #feedback command
 @bot.message_handler(commands=["feedback"])
