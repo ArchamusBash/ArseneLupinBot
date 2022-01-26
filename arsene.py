@@ -7,8 +7,8 @@ import base64
 
 #bot token and other data
 token = os.getenv("API_KEY")
-admin = os.getenv("admin")
-channel = os.getenv("channel")
+admin = os.getenv("ADMIN")
+channel = os.getenv("CHANNEL")
 
 #empty array for comparisons
 arr= [""]
