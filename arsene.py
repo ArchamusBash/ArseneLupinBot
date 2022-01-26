@@ -6,12 +6,9 @@ import hashlib
 import base64
 
 #bot token and other data
-#token = os.getenv("API_KEY")
-token = '5064313232:AAFMGpe3zyFpcIxgFcU6UBmwAY3YvQaM0g0'
-#admin = os.getenv("admin")
-admin = 1808619177
-#channel = os.getenv("channel")
-channel = -1001537285475
+token = os.getenv("API_KEY")
+admin = os.getenv("admin")
+channel = os.getenv("channel")
 
 #empty array for comparisons
 arr= [""]
