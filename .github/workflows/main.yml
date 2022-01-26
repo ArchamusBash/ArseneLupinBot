@@ -3,6 +3,8 @@
 name: CI
 env:
     API_KEY: $${{ secrets.API_KEY }}
+    ADMIN: $${{ secrets.ADMIN }}
+    CHANNEL: $${{ secrets.CHANNEL }}
 
 
 
