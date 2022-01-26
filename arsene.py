@@ -1,18 +1,20 @@
 #adding imports
+import telegram
 import telebot
 import os
 import hashlib
 import base64
-import string
 
-#bot token
-api = os.getenv("API_KEY")
+#bot token and other data
+token = os.getenv("API_KEY")
+admin = os.getenv("admin")
+channel = os.getenv("channel")
 
-#null array for comparisons
+#empty array for comparisons
 arr= [""]
 
-#tializing telebot lib
-bot = telebot.TeleBot(api)
+#initializing telebot lib
+bot = telebot.TeleBot(token)
 
 #starting greet
 @bot.message_handler(commands=["start"])
@@ -22,7 +24,7 @@ def Greet(message):
 #list all commands
 @bot.message_handler(commands=["list"])
 def List(message):
-    bot.send_message(message.chat.id, "/base64 for base64 encoding\n /base64decode for base64 decoding\n /md5 for md5 hashing")
+    bot.send_message(message.chat.id, "/base64 for base64 encoding\n /base64decode for base64 decoding\n /md5 for md5 hashing\n /feedback to send feedback to admin")
 
 #base64 encode
 @bot.message_handler(commands=["base64"])
@@ -63,7 +65,21 @@ def EncMd5(message):
             text = hashlib.md5(text.encode()).hexdigest()
             bot.reply_to(message, text)
 
+#feedback command
+@bot.message_handler(commands=["feedback"])
+def Feedback(message):
+    feedback = bot.send_message(message.chat.id, "Write your feedback, feel free to suggest anything.")
+    bot.register_next_step_handler(feedback, Send)
 
-while True:
-    bot.polling()
+#new feedback method
+def Send(message):
+    bot.send_message(message.chat.id, "Thank you for your feedback!")
+    bot.forward_message(channel, message.chat.id, message.id)
 
+#old feedback method
+def OldSend(message):
+    name = str(message.text)
+    doc = open("feedback.txt", "w", encoding="utf-8").write(name)
+    bot.send_document(admin, doc)
+
+bot.polling()
